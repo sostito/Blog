@@ -9,9 +9,10 @@ Blog es una web api que permite gestionar el acceso de usuarios a funcionalidade
 4. [Como funciona](#como-funciona)
 5. [Observaciones](#observaciones)
 6. [Despliegue](#despliegue)
-7. [EndPoints disponibles](#endpoints-disponibles)
-8. [EndPoints disponibles](#estructura-peticiones)
-9. [Contacto](#contacto)
+7. [Credenciales de prueba](#credenciales)
+8. [EndPoints disponibles](#endpoints-disponibles)
+9. [EndPoints disponibles](#estructura-peticiones)
+10. [Contacto](#contacto)
 
 ## Requisitos obligatorios
 <a name="requisitos-obligatorios"></a>
@@ -51,6 +52,17 @@ Blog es una web api que permite gestionar el acceso de usuarios a funcionalidade
 <a name="despliegue"></a>
 - El desarrollo se encuentra desplegado en app service y tiene la siguiente URL base: http://zemogablog.azurewebsites.net
 - La base de datos es SQL Server y se encuentra desplegada en un host gratuito: https://somee.com/ 
+
+<a name="credenciales"></a>
+## Credenciales de prueba
+- writer: {
+    "UserName": "writer",
+    "Password": "1224"
+}
+- editor: {
+    "UserName": "editor",
+    "Password": "1224"
+}
 
 ## EndPoints disponibles
 <a name="endpoints-disponibles"></a>
