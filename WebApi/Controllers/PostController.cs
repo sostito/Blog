@@ -50,6 +50,20 @@ namespace WebApi.Controllers
         }
 
         ///<summary>
+        /// Actualiza un comentario
+        /// </summary>
+        /// <response code="204">Comentario actualizado correctamente</response>
+        /// <response code="400">Error al actualizar comentario</response>
+        [HttpPut("UpdateComment")]
+        [Authorize(Roles = "writer")]
+        public async Task<IActionResult> UpdateComment([FromBody] UpdateCommentRequest updateCommentRequest)
+        {
+            var comment = updateCommentRequest.Adapt<Comment>();
+            var response = await postService.UpdateComment(comment);
+            return StatusCode(response ? 204 : 400);
+        }
+
+        ///<summary>
         /// Obtener lista de Post que ya fueron aprobados
         /// </summary>
         /// <response code="200">Se obtiene lista correctamente (llena o vacía)</response>
@@ -91,14 +105,14 @@ namespace WebApi.Controllers
         /// Permite eliminar Post
         /// </summary>
         /// <response code="401">Error de autenticación</response>
-        /// <response code="200">Post eliminado correctamente</response>
+        /// <response code="204">Post eliminado correctamente</response>
         /// <response code="400">Error al eliminar Post</response>
         [HttpGet("DeletePost/{postId}")]
         [Authorize(Roles = "editor")]
         public async Task<IActionResult> DeletePost([FromRoute] int postId)
         {
             var response = await postService.DeletePost(postId);
-            return StatusCode(response ? 200 : 400);
+            return StatusCode(response ? 204 : 400);
         }
 
     }

@@ -52,6 +52,29 @@ namespace Application.Services
             }
         }
 
+        public async Task<bool> UpdateComment(Comment comment)
+        {
+            try
+            {
+                var valid = await blogDbContext.Comments.AnyAsync(x => x.Id == comment.Id);
+
+                if (valid)
+                {
+                    var commentDb = await blogDbContext.Comments.FirstAsync(x => x.Id == comment.Id);
+                    commentDb.Text = comment.Text;
+                    blogDbContext.Update(commentDb);
+                    var result = await blogDbContext.SaveChangesAsync();
+                    return result > 0;
+                }
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public async Task<List<Post>> GetPassedPost()
         {
             try
