@@ -3,3 +3,15 @@
 ################################################################################
 
 /.vs/BlogApi
+/Application/bin
+/Application/obj
+/Data/bin
+/Data/obj
+/Domain/bin
+/Domain/obj
+/Models/bin
+/Models/obj
+/Test/bin
+/Test/obj
+/WebApi/bin
+/WebApi/obj
