@@ -11,7 +11,7 @@ Blog es una web api que permite gestionar el acceso de usuarios a funcionalidade
 6. [Despliegue](#despliegue)
 7. [Credenciales de prueba](#credenciales)
 8. [EndPoints disponibles](#endpoints-disponibles)
-9. [EndPoints disponibles](#estructura-peticiones)
+9. [Estructura de peticiones](#estructura-peticiones)
 10. [Contacto](#contacto)
 
 ## Requisitos obligatorios
@@ -78,6 +78,9 @@ Blog es una web api que permite gestionar el acceso de usuarios a funcionalidade
 3. http://zemogablog.azurewebsites.net/api/Post/WritePost
 4. http://zemogablog.azurewebsites.net/api/Post/WriteComment
 
+### Put
+1. http://zemogablog.azurewebsites.net/api/Post/UpdateComment
+
 #### Estructura de peticiones de tipo POST
 <a name="estructura-peticiones"></a>
 1. Login: {
@@ -95,6 +98,12 @@ Blog es una web api que permite gestionar el acceso de usuarios a funcionalidade
 4. WriteComment: {
   "text": "string",
   "idPost": 0
+}
+
+#### Estructura de peticiones de tipo PUT
+1. UpdateComment: {
+  "id": 0,
+  "text": "string"
 }
 
 ### Contacto
