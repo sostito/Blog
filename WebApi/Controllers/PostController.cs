@@ -68,9 +68,9 @@ namespace WebApi.Controllers
         /// </summary>
         /// <response code="200">Se obtiene lista correctamente (llena o vacía)</response>
         [HttpGet("GetPassedPost")]
-        public async Task<IActionResult> GetPassedPost()
+        public IActionResult GetPassedPost()
         {
-            var response = await postService.GetPassedPost();
+            var response = postService.GetPassedPost();
             return Ok(response);
         }
 

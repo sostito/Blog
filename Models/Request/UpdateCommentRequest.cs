@@ -1,8 +1,12 @@
-﻿namespace Models.Request
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Models.Request
 {
     public class UpdateCommentRequest
     {
+        [Required]
         public int Id { get; set; }
-        public string Text { get; set; }
+        [Required]
+        public string? Text { get; set; }
     }
 }

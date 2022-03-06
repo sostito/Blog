@@ -1,12 +1,16 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Models.Request
 {
     [ExcludeFromCodeCoverage]
     public class CreateUserRequest
     {
-        public string UserName { get; set; } = null!;
-        public string Role { get; set; }
-        public string Password { get; set; }
+        [Required]
+        public string? UserName { get; set; } = null!;
+        [Required]
+        public string? Role { get; set; }
+        [Required]
+        public string? Password { get; set; }
     }
 }

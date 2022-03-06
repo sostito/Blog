@@ -75,11 +75,23 @@ namespace Application.Services
             }
         }
 
-        public async Task<List<Post>> GetPassedPost()
+        public object GetPassedPost()
         {
             try
             {
-                var postList = await blogDbContext.Posts.Where(post => post.Passed == true).ToListAsync();
+                var postList = blogDbContext.Posts
+                    .Join(
+                    blogDbContext.Users,
+                    Post => Post.IdUser,
+                    User => User.Id,
+                    (post, user) => new
+                    {
+                        Comment = post.Content,
+                        Author = user.UserName,
+                        ApprobalDate = post.DatePassed
+                    }
+                 ).ToList();
+
                 return postList;
             }
             catch (Exception ex)
