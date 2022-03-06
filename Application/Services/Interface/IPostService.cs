@@ -1,5 +1,6 @@
 ﻿
 using Data.Models;
+using Models.Dto;
 
 namespace Application.Services.Interface
 {
@@ -8,7 +9,7 @@ namespace Application.Services.Interface
         Task<bool> WritePost(Post post, string userId);
         Task<bool> WriteComment(Comment comment);
         Task<bool> UpdateComment(Comment comment);
-        object GetPassedPost();
+        List<PassedPostDto> GetPassedPost();
         Task<List<Post>> GetNotPassedPost();
         Task<bool> ApprovePost(int postId);
         Task<bool> DeletePost(int postId);

@@ -2,6 +2,7 @@
 using Data.Context;
 using Application.Services.Interface;
 using Microsoft.EntityFrameworkCore;
+using Models.Dto;
 
 namespace Application.Services
 {
@@ -75,16 +76,17 @@ namespace Application.Services
             }
         }
 
-        public object GetPassedPost()
+        public List<PassedPostDto> GetPassedPost()
         {
             try
             {
                 var postList = blogDbContext.Posts
+                    .Where(x => x.Passed == true)
                     .Join(
                     blogDbContext.Users,
                     Post => Post.IdUser,
                     User => User.Id,
-                    (post, user) => new
+                    (post, user) => new PassedPostDto
                     {
                         Comment = post.Content,
                         Author = user.UserName,

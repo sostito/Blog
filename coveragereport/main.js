@@ -224,7 +224,7 @@ var assemblies = [
   {
     "name": "Application",
     "classes": [
-      { "name": "Application.Services.PostService", "rp": "Application_PostService.html", "cl": 59, "ucl": 15, "cal": 74, "tl": 124, "ct": "LineCoverage", "mc": "-", "cb": 5, "tb": 6, "lch": [], "bch": [], "hc": [] },
+      { "name": "Application.Services.PostService", "rp": "Application_PostService.html", "cl": 83, "ucl": 18, "cal": 101, "tl": 161, "ct": "LineCoverage", "mc": "-", "cb": 7, "tb": 8, "lch": [], "bch": [], "hc": [] },
       { "name": "Application.Services.TokenService", "rp": "Application_TokenService.html", "cl": 21, "ucl": 0, "cal": 21, "tl": 39, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Application.Services.UserService", "rp": "Application_UserService.html", "cl": 20, "ucl": 0, "cal": 20, "tl": 45, "ct": "LineCoverage", "mc": "-", "cb": 2, "tb": 2, "lch": [], "bch": [], "hc": [] },
     ]},

@@ -98,6 +98,50 @@ namespace Test.Application.Services
         }
 
         [Fact]
+        public async void UpdateComment_Succes()
+        {
+            var options = new DbContextOptionsBuilder<BlogDbContext>()
+                  .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                  .Options;
+
+            var dbContext = new BlogDbContext(options);
+            dbContext.Database.EnsureCreated();
+
+            if (await dbContext.Posts.CountAsync() <= 0)
+            {
+                dbContext.Comments.Add(new Comment() { Text = "", Id = 1 });
+                await dbContext.SaveChangesAsync();
+            }
+
+            PostService postService = new PostService(dbContext);
+
+            var result = postService.UpdateComment(new Comment() { Id = 1 }).Result;
+            Assert.True(result);
+        }
+
+        [Fact]
+        public async void UpdateComment_Fail()
+        {
+            var options = new DbContextOptionsBuilder<BlogDbContext>()
+                  .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                  .Options;
+
+            var dbContext = new BlogDbContext(options);
+            dbContext.Database.EnsureCreated();
+
+            if (await dbContext.Posts.CountAsync() <= 0)
+            {
+                dbContext.Comments.Add(new Comment() { Text = "", Id = 1 });
+                await dbContext.SaveChangesAsync();
+            }
+
+            PostService postService = new PostService(dbContext);
+
+            var result = postService.UpdateComment(new Comment() { Id = 2 }).Result;
+            Assert.False(result);
+        }
+
+        [Fact]
         public async void GetPassedPost_Succes()
         {
             var options = new DbContextOptionsBuilder<BlogDbContext>()
@@ -109,13 +153,14 @@ namespace Test.Application.Services
 
             if (await dbContext.Posts.CountAsync() <= 0)
             {
-                dbContext.Posts.Add(new Post() { Content = "", Id = 1, Passed = true });
+                dbContext.Posts.Add(new Post() { Content = "", IdUser = 1, Passed = true });
+                dbContext.Users.Add(new User() { Id = 1, UserName = "" });
                 await dbContext.SaveChangesAsync();
             }
 
             PostService postService = new PostService(dbContext);
 
-            var result = postService.GetPassedPost().Result;
+            var result = postService.GetPassedPost();
             Assert.True(result.Count > 0);
         }
 
@@ -131,14 +176,14 @@ namespace Test.Application.Services
 
             if (await dbContext.Posts.CountAsync() <= 0)
             {
-                dbContext.Posts.Add(new Post() { Content = "", Id = 1 });
+                dbContext.Posts.Add(new Post() { IdUser = 1, Content = "" });
                 await dbContext.SaveChangesAsync();
             }
 
             PostService postService = new PostService(dbContext);
 
-            var result = postService.GetPassedPost().Result;
-            Assert.True(result.Count == 0);
+            var result = postService.GetPassedPost();
+            Assert.False(result.Count > 0);
         }
 
         [Fact]
