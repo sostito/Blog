@@ -34,7 +34,7 @@ Blog es una web api que permite gestionar el acceso de usuarios a funcionalidade
 <a name="como-funciona"></a>
 1. Para acceder a funciones protegidas segun enunciado se necesita un JWT de tipo bearer el cual debe ser enviado en la cabecera de la petición, y se puede obtener mediante el endpoint(POST) http://zemogablog.azurewebsites.net/api/User/Login
 2. Los endpoint accesibles sin ningun tipo de usuario son los utilizados para obtener lista de comentarios ya aprobados, escribir comentarios, realizar login y crear nuevo usuario
-3. Solo los usuarios con rol "writer" pueden crear nuevos comentarios
+3. Solo los usuarios con rol "writer" pueden crear nuevos post y editar comentarios
 4. Solo los usuarios con rol "editor" pueden listar los post pendientes de aprobación, como tambien aprobarlos o eliminarlos
 
 ## Observaciones 
